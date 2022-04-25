@@ -15,9 +15,13 @@ router.post('/create-campaign', isLoggedIn, (req, res, next) => {
     description: req.body.description,
     imageUrl: req.body.imageUrl,
     owner: req.session.user._id,
-    // reviews: req.body.reviews
+    duration: req.body.duration,
+    goal: req.body.goal,
+    // deadline: 
+
   })
     .then(function (createdCampaigns) {
+
       res.redirect('/campaigns/my-campaigns')
 
     })
@@ -32,7 +36,7 @@ router.post('/create-campaign', isLoggedIn, (req, res, next) => {
 router.get('/campaigns-list', (req, res, next) => {
   Campaign.find()
   .populate({
-    path: "reviews",
+    path: "pledges",
     populate: {
       path: "user",
     },
@@ -51,7 +55,7 @@ router.get('/campaigns-list', (req, res, next) => {
 router.get("/my-campaigns", isLoggedIn, function (req, res, next) {
   Campaign.find({owner: req.session.user._id})
   .populate({
-    path: "reviews",
+    path: "pledges",
     populate: {
       path: "user",
     },

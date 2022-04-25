@@ -2,3 +2,12 @@
 <p>Welcome to {{title}}</p>
 
 {{message}}
+
+{{#each campaigns}}
+<h5>{{this.name}}</h5>
+{{/each}}
+
+{{#each pledges}}
+<h5>{{this.user.fullName}}</h5>
+<p>-${{this.amount}}</p>
+{{/each}}

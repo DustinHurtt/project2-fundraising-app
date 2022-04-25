@@ -4,7 +4,9 @@ const userSchema = new Schema(
     {
       email: String,
       password: String,
-      fullName: String
+      fullName: String,
+      // location: {type: String}
+      // Card Info?
     },
     {
       timestamps: true
