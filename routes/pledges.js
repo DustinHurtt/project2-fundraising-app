@@ -9,7 +9,7 @@ const isNotOwner = require('../middleware/isNotOwner');
 router.get('/:id/add-pledge', isLoggedIn, isNotOwner, function(req, res, next) {
     Campaign.findById(req.params.id)
     .then (function (foundCampaign) {
-      res.render('add-campaign', {foundCampaign: foundCampaign});
+      res.render('add-pledge', {foundCampaign: foundCampaign});
   })
     .catch(function (error) {
       console.log(error);
@@ -25,7 +25,7 @@ router.post('/:id/add-pledge', isLoggedIn, isNotOwner, (req, res, next) => {
       .then(function (newPledge){
         Campaign.findByIdAndUpdate(
             {_id: req.params.id},
-            {$addToSet: {pledges: newPledge}}
+            {$addToSet: {reviews: newPledge}}
         )
         .then(function () {
           res.redirect("/campaigns/campaigns-list");

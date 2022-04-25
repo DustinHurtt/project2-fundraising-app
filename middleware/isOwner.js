@@ -5,8 +5,9 @@ const isOwner= (req, res, next) => {
     Campaign.findById(req.params.id)
     .populate('owner')
     .then(foundCampaign => {
-
-        if (foundCampaign._id.toHexString() === req.session.user._id){
+        console.log(req.session.user._id)
+        console.log(foundCampaign.owner._id)
+        if (foundCampaign.owner._id.toHexString() === req.session.user._id){
             next()
         } else {
             res.render('index', {

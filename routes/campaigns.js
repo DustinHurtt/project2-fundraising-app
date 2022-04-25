@@ -17,7 +17,7 @@ router.post('/create-campaign', isLoggedIn, (req, res, next) => {
     owner: req.session.user._id,
     // reviews: req.body.reviews
   })
-    .then(function (createdRooms) {
+    .then(function (createdCampaigns) {
       res.redirect('/campaigns/my-campaigns')
 
     })
@@ -68,7 +68,7 @@ router.get("/my-campaigns", isLoggedIn, function (req, res, next) {
 
 router.post('/:id/delete', isOwner, (req, res, next) => {
 
-  Rooms.findByIdAndRemove(req.params.id)
+  Campaign.findByIdAndRemove(req.params.id)
     .then(function () {
       res.redirect("/campaigns/my-campaigns");
     })
