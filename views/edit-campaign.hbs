@@ -1,0 +1,16 @@
+<h2>Update the Campaign</h2>
+
+
+   <form method="post" action="/campaigns/{{campaign._id}}/edit">
+
+    <label>Name</label>
+    <input name = "name" type="text" value="{{campaign.name}}">
+    <label>Description</label>
+    <input name = "description" type="text" value="{{campaign.description}}">
+    <label>Image</label>
+    <input name = "imageUrl" type="text" value="{{campaign.imageUrl}}">
+   
+    <button type="submit">Update Campaign</button>
+
+
+</form>

@@ -1,0 +1,16 @@
+<h2>Donate to the Campaign</h2>
+
+    <img src="{{foundPledge.imageUrl}}" alt="room pic">
+    <p>{{foundPledge.name}}</p>
+
+    <form method="post" action="/review/{{foundPledge._id}}/add-review">
+
+    <label>Pledge</label>
+    <input name = "comment" type="text" value="">
+
+    <button type="submit">Add Pledge</button>
+
+
+</form>
+
+

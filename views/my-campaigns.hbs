@@ -1,0 +1,35 @@
+<h2>My Rooms</h2>
+
+<div class=" ">
+    {{#each myCampaigns}}
+
+    <ul>
+
+  
+        <img src="{{this.imageUrl}}" alt="room pic">  
+        <p> {{this.name}} </p>
+        <p> {{this.description}} </p>
+        <ul>
+        {{#each this.reviews}}
+        <li>
+            <h5>{{this.comment}}</h5>
+            <p>-{{this.user.fullName}}</p>
+        </li>
+        {{/each}}
+        </ul>
+        <br>
+
+        <a href="/rooms/{{this._id}}/edit">Update Campaign</a>
+
+        <form method = "post" action="/campaigns/{{this._id}}/delete">
+            <input type="submit" value="Delete Campaign" />
+        </form>
+
+<hr>
+
+</ul>
+
+
+    {{/each}}
+
+</div>

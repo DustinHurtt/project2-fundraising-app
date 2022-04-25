@@ -1,0 +1,15 @@
+<h2>Create a new User</h2>
+
+<form method ="post" action="/users/signup">
+<label>Email</label>
+<input name = "email" type="email" required>
+<label>Full Name</label>
+<input name = "fullName" type="text" required>
+<label>Password</label>
+<input name = "password" type="password" required minlength="6">
+
+<button type="submit">Create User</button>
+
+</form>
+
+<p>{{message}}</p>

@@ -1,0 +1,31 @@
+<h2>All Campaigns</h2>
+
+<div class=" ">
+    {{#each campaigns}}
+
+    <ul>
+
+  
+        <img src="{{this.imageUrl}}" alt="room pic"> 
+        <p> {{this.name}} </p>
+        <p> {{this.description}} </p>
+        <ul>
+        {{#each this.reviews}}
+        <li>
+            <h5>{{this.comment}}</h5>
+            <p>-{{this.user.fullName}}</p>
+        </li>
+        {{/each}}
+        
+        </ul>
+        <a href="pledges/{{this._id}}/add-pledge">Donate to this campaign</a>
+
+<hr>
+
+</ul>
+
+    {{/each}}
+
+</div>
+
+    <a href="/rooms/my-rooms">See My Campaigns</a>
