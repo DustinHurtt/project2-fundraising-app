@@ -11,6 +11,13 @@
         <p> {{this.description}} </p>
         <p> {{this.duration}} weeks </p>
         <p> {{this.goal}} </p>
+        <p> {{this.currentTotal}} </p>
+        <p> +{{this.deadline}} </p>
+        <p> *{{this.pledges.length}} donations so far </p>
+        <p> *{{this.timeLeft.days}} days {{this.timeLeft.hours}} hours {{this.timeLeft.minutes }} minutes and {{this.timeLeft.seconds}} seconds before deadline. </p>
+        <p>^^{{this.percent}} % to goal</p>
+        <p>@@{{this.donations}}</p>
+        <p>!!{{this.readableTotal}}</p>
         <ul>
         {{#each this.pledges}}
         <li>

@@ -1,19 +1,47 @@
-    
-    
-    <form id="payment-form">
-    {{!-- <label>Pledge</label>
-    <input name = "comment" type="text" value="">
-    <label>Amount</label>
-    <input name = "amount" type="number" value=""> --}}
-      <div id="payment-element">
-        <!--Stripe.js injects the Payment Element-->
-      </div>
+    <section>
 
-      <button id="submit">
-        <div class="spinner hidden" id="spinner"></div>
-        <span id="button-text">Pay now</span>
-      </button>
-      <div id="payment-message" class="hidden"></div>
-    </form>
+      {{!-- <form action="/pledges/price_1KsqbjCdp1vgefLQ4I1Ifzq3/create-checkout-session" method="POST">
+        <input type="number" name="amount" value="20" hidden>
+        <button type="submit" id="checkout-button">Donate $20</button>
+      </form>
 
-    <script src="/javascripts/checkout.js" defer></script>
+      <form action="/pledges/price_1KsqcYCdp1vgefLQTKRe651f/create-checkout-session" method="POST">
+        <input type="number" name="amount" value="50" hidden>
+        <button type="submit" id="checkout-button">Donate $50</button>
+      </form>
+
+      <form action="/pledges/price_1KsqcwCdp1vgefLQCCJg0HBA/create-checkout-session" method="POST">
+        <input type="number" name="amount" value="100" hidden>
+        <button type="submit" id="checkout-button">Donate $100</button>
+      </form>
+
+      <form action="/pledges/price_1KsqdQCdp1vgefLQU5I71jdO/create-checkout-session" method="POST">
+        <input type="number" name="amount" value="500" hidden>      
+        <button type="submit" id="checkout-button">Donate $500</button>
+      </form>
+
+      <form action="/pledges/price_1KsqdyCdp1vgefLQ5KubMlcf/create-checkout-session" method="POST">
+        <input type="number" name="amount" value="1000" hidden>
+        <button type="submit" id="checkout-button">Donate $1000</button>
+      </form> --}}
+
+      <form action="/pledges/{{foundCampaign._id}}/create-checkout-session"method='post'>
+          <label>Comment</label>
+          <input name="comment" />
+
+        <label>Amount</label>
+        <input type="radio" id="20" name="price_ID" value="price_1KsqbjCdp1vgefLQ4I1Ifzq3">
+        <label for="20">20</label>
+        <input type="radio" id="50" name="price_ID" value="price_1KsqcYCdp1vgefLQTKRe651f">
+        <label for="50">50</label>
+        <input type="radio" id="100" name="price_ID"value="price_1KsqcwCdp1vgefLQCCJg0HBA">
+        <label for="100">100</label>
+        <input type="radio" id="500" name="price_ID" value="price_1KsqdQCdp1vgefLQU5I71jdO">
+        <label for="500">500</label>
+        <input type="radio" id="1000" name="price_ID" value="price_1KsqdyCdp1vgefLQ5KubMlcf">
+        <label for="1000">1000</label>
+
+          <button type="submit" id="checkout-button">Donate</button>
+      </form>
+
+    </section>

@@ -11,12 +11,141 @@ img {
   height: 20vh;
 }
 
+
+
+
+
+
+body {
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+  /* background: #242d60; */
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+  'Helvetica Neue', 'Ubuntu', sans-serif;
+  height: 100vh;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.stripe-section {
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  height: 112px;
+  border-radius: 6px;
+  justify-content: space-between;
+}
+
+.product {
+  display: flex;
+}
+
+.description {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* p {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.154px;
+  color: #242d60;
+  height: 100%;
+  width: 100%;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+} */
+
+/* img {
+  border-radius: 6px;
+  margin: 10px;
+  width: 54px;
+  height: 57px;
+} */
+
+h3,
+h5 {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.154px;
+  color: #242d60;
+  margin: 0;
+}
+
+h5 {
+  opacity: 0.5;
+}
+
+button {
+  height: 36px;
+  background: #556cd6;
+  color: white;
+  width: 33%;
+  font-size: 14px;
+  border: 0;
+  margin: 5px;
+  font-weight: 500;
+  cursor: pointer;
+  letter-spacing: 0.6;
+  border-radius: 0 0 6px 6px;
+  transition: all 0.2s ease;
+  box-shadow: 0px 4px 5.5px 0px rgba(0, 0, 0, 0.07);
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* Variables */
-* {
+/* * {
   box-sizing: border-box;
 }
 
-/* body {
+body {
   font-family: -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: 16px;
   -webkit-font-smoothing: antialiased;
@@ -25,7 +154,7 @@ img {
   align-content: center;
   height: 100vh;
   width: 100vw;
-} */
+}
 
 #payment-form {
   width: 30vw;
@@ -42,8 +171,8 @@ img {
   justify-content: center;
   align-content: center;
   height: 20vh;
-  width: 20vw;
-}
+  /* width: 20vw; */
+/* }
 
 .hidden {
   display: none;
@@ -62,7 +191,7 @@ img {
 }
 
 /* Buttons and links */
-button {
+/* button {
   background: #5469d4;
   font-family: Arial, sans-serif;
   color: #ffffff;
@@ -86,7 +215,7 @@ button:disabled {
 }
 
 /* spinner/processing state, errors */
-.spinner,
+/* .spinner,
 .spinner:before,
 .spinner:after {
   border-radius: 50%;
@@ -160,4 +289,4 @@ button:disabled {
     width: 80vw;
     min-width: initial;
   }
-}
+}   */

@@ -1,0 +1,84 @@
+    <h2>Donate to the Campaign</h2>
+
+        <div class="sr-root">
+      <div class="sr-main" style="display: flex;">
+        <header class="sr-header">
+          <div class="sr-header__logo"></div>
+        </header>
+
+      <form action="/pledges/create-checkout-session" method="POST"></form>
+
+        <div class="sr-container">
+          <section class="container">
+            {{!-- <h1>One-time Donation</h1> --}}
+            <form action="https://buy.stripe.com/test_aEUdUJgPnakJ2uQdQU">
+            <button 
+              data-checkout-mode="payment"
+              data-price-id="price_1KsqbjCdp1vgefLQ4I1Ifzq3"
+            >
+              Donate $20
+            </button>
+            </form>
+
+            <form action="https://buy.stripe.com/test_28o17X42B1Od5H25kn">
+            <button 
+              data-checkout-mode="payment"
+              data-price-id="price_1KsqcYCdp1vgefLQTKRe651f"
+            >
+              Donate $50
+            </button>
+            </form>
+
+            <form action="https://buy.stripe.com/test_7sI03TdDb64t3yU6oq">
+            <button 
+              data-checkout-mode="payment"
+              data-price-id="price_1KsqcwCdp1vgefLQCCJg0HBA"
+            >
+              Donate $100
+            </button>
+            </form>
+
+            <form action="https://buy.stripe.com/test_4gw8Ap42B2ShglGeUV">
+            <button 
+              data-checkout-mode="payment"
+              data-price-id="price_1KsqdQCdp1vgefLQU5I71jdO"
+            >
+              Donate $500
+            </button>
+            </form>
+
+            <form action="https://buy.stripe.com/test_bIY4k98iR8cBfhC4gg">
+            <button 
+              data-checkout-mode="payment"
+              data-price-id="price_1KsqdyCdp1vgefLQ5KubMlcf"
+            >
+              Donate $1000
+            </button> 
+            </form>
+
+          </section>
+
+        </form>
+
+        </div>
+        <div id="error-message"></div>
+      </div>
+    </div>
+
+
+        {{!-- <script src="https://js.stripe.com/v3/"></script> --}}
+
+    <section class="stripe-section">
+      <div class="product">
+        <img src="https://i.imgur.com/EHyR2nP.png" alt="The cover of Stubborn Attachments" />
+        <div class="description">
+          <h3>Stubborn Attachments</h3>
+          <h5>$20.00</h5>
+        </div>
+      </div>
+      <form action="/pledges/create-checkout-session" method="POST">
+        <button type="submit" id="checkout-button">Checkout</button>
+      </form>
+    </section>
+
+        $deadline: { $dateToString: { format: "%m/%d/%Y" , date: new Date( Date.now() + req.body.duration * 6.048e+8) } }
