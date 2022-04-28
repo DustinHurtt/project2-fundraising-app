@@ -49,8 +49,8 @@ app.use(function(err, req, res, next) {
 });
 
 mongoose
-  .connect('mongodb://localhost/project2-fundraising-app')
-  // .connect(process.env.MONGODB_URI)
+  // .connect('mongodb://localhost/project2-fundraising-app')
+  .connect(process.env.MONGODB_URI)
   .then(x => console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`))
   .catch(err => console.error('Error connecting to mongo', err));
 
