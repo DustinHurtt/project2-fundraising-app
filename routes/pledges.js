@@ -4,6 +4,9 @@ var router = express.Router();
 // const app = express();
 // This is your test secret API key.
 
+const { DateTime }  = require('luxon')
+const { Interval }  = require('luxon')
+
 const Pledge = require("../models/Pledge.model");
 const Campaign = require("../models/Campaign.model");
 const isLoggedIn = require("../middleware/isLoggedIn");
@@ -22,11 +25,34 @@ const stripe = Stripe(
 // app.use(express.json());
 
 router.get(
-  "/:id/add-pledge",
+  "/:id/add-pledge", 
   isLoggedIn,
   isNotOwner,
-  function (req, res, next) {
+  async function (req, res, next) {
+
+    await Campaign.findById(req.params.id).cursor().eachAsync( function (campaign){
+      campaign.timeLeft = Interval.fromDateTimes((new Date(Date.now())), campaign.rawDeadline).toDuration(['days', 'hours', 'minutes', 'seconds']).toObject();
+      campaign.percent = Math.round(campaign.currentTotal / campaign.goal * 100);
+      campaign.donations = campaign.pledges.length;
+      campaign.readableTotal = campaign.currentTotal.toLocaleString('en-US', {
+        style: 'currency',
+        currency: 'USD',
+        maximumFractionDigits: 0
+      })
+  
+  
+      //create a calculation to determine how much real time this is
+      return campaign.save()
+      })
+
     Campaign.findById(req.params.id)
+    .populate({
+      path: "pledges",
+      options: { sort: { 'createdAt': -1 } },
+      populate: {
+        path: "user",
+      },
+    })
       .then(function (foundCampaign) {
         // res.render('add-pledge', {foundCampaign: foundCampaign});
         res.render("checkout", { foundCampaign: foundCampaign });

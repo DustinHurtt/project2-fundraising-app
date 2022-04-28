@@ -72,7 +72,7 @@ router.get('/campaigns-list', async (req, res, next) => {
       path: "user",
     },
   })
-  .sort({"createdAt": -1})
+  // .sort({"createdAt": -1})
   
   .then(function(campaigns){
 

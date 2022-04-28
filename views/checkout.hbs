@@ -1,29 +1,17 @@
     <section>
 
-      {{!-- <form action="/pledges/price_1KsqbjCdp1vgefLQ4I1Ifzq3/create-checkout-session" method="POST">
-        <input type="number" name="amount" value="20" hidden>
-        <button type="submit" id="checkout-button">Donate $20</button>
-      </form>
-
-      <form action="/pledges/price_1KsqcYCdp1vgefLQTKRe651f/create-checkout-session" method="POST">
-        <input type="number" name="amount" value="50" hidden>
-        <button type="submit" id="checkout-button">Donate $50</button>
-      </form>
-
-      <form action="/pledges/price_1KsqcwCdp1vgefLQCCJg0HBA/create-checkout-session" method="POST">
-        <input type="number" name="amount" value="100" hidden>
-        <button type="submit" id="checkout-button">Donate $100</button>
-      </form>
-
-      <form action="/pledges/price_1KsqdQCdp1vgefLQU5I71jdO/create-checkout-session" method="POST">
-        <input type="number" name="amount" value="500" hidden>      
-        <button type="submit" id="checkout-button">Donate $500</button>
-      </form>
-
-      <form action="/pledges/price_1KsqdyCdp1vgefLQ5KubMlcf/create-checkout-session" method="POST">
-        <input type="number" name="amount" value="1000" hidden>
-        <button type="submit" id="checkout-button">Donate $1000</button>
-      </form> --}}
+    <img src="{{foundCampaign.imageUrl}}" alt="room pic">
+    <p>{{foundCampaign.name}}</p>
+    <p>{{foundCampaign.owner.fullName}}</p>
+    <p>{{foundCampaign.description}}</p>
+    <p>{{foundCampaign.deadline}}</p>
+    <p>{{foundCampaign.goal}}</p>
+    <p>{{foundCampaign.donations}}</p>
+    <p>{{foundCampaign.readableTotal}}</p>
+    <p>{{foundCampaign.percent}}</p>
+    <p>{{foundCampaign.deadline}}</p>
+    <p> *{{foundCampaign.timeLeft.days}} days {{foundCampaign.timeLeft.hours}} hours {{foundCampaign.timeLeft.minutes }} minutes and {{foundCampaign.timeLeft.seconds}} seconds before deadline. </p>
+    
 
       <form action="/pledges/{{foundCampaign._id}}/create-checkout-session"method='post'>
           <label>Comment</label>
@@ -43,5 +31,14 @@
 
           <button type="submit" id="checkout-button">Donate</button>
       </form>
+
+
+              {{#each foundCampaign.pledges}}
+        <li>
+            <h5>{{this.comment}}</h5>
+            <p>-{{this.user.fullName}}</p>
+            <p>-${{this.amount}}</p>
+        </li>
+        {{/each}}
 
     </section>
