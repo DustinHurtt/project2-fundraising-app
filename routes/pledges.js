@@ -38,10 +38,13 @@ router.get(
         style: 'currency',
         currency: 'USD',
         maximumFractionDigits: 0
+      }),
+      campaign.readableGoal = campaign.goal.toLocaleString('en-US', {
+        style: 'currency',
+        currency: 'USD',
+        maximumFractionDigits: 0
       })
   
-  
-      //create a calculation to determine how much real time this is
       return campaign.save()
       })
 
@@ -83,12 +86,10 @@ router.post("/:id/add-pledge", isLoggedIn, isNotOwner, (req, res, next) => {
 });
 
 router.post('/:id/create-checkout-session', async (req, res) => {
-// router.post("/create-checkout-session", async (req, res) => {
-  //switch
+
   const session = await stripe.checkout.sessions.create({
     line_items: [
       {
-        // Provide the exact Price ID (for example, pr_1234) of the product you want to sell
         price: req.body.price_ID,
         quantity: 1,
       },
@@ -97,25 +98,7 @@ router.post('/:id/create-checkout-session', async (req, res) => {
     success_url: `${YOUR_DOMAIN}/campaigns/campaigns-list`,
     cancel_url: `${YOUR_DOMAIN}/users/login`,
   });
-  // Pledge.create({
-  //   user: req.session.user._id,
-  //   comment: req.body.comment,
-  //   amount: req.body.amount
-  // })
-  // .then(function (newPledge){
-  //   Campaign.findByIdAndUpdate(
-  //       {_id: req.params.id},
-  //       {$addToSet: {pledges: newPledge}}
-  //   )
-  //   .then(function () {
-  //     res.redirect(303, session.url);
-  //   })
-  // })
-  // .catch(function (error) {
-  //   res.json(error);
-  // });
 
-  // let cleanAMount = '$' + session.amount_total/100
 
   try {
     let newPledge = await Pledge.create({
@@ -138,31 +121,6 @@ router.post('/:id/create-checkout-session', async (req, res) => {
   res.redirect(303, session.url);
 });
 
-// const calculateOrderAmount = (items, amount) => {
-//   // Replace this constant with a calculation of the order's amount
-//   // Calculate the order total on the server to prevent
-//   // people from directly manipulating the amount on the client
-//   return 1400;
-// };
 
-// router.post("/create-payment-intent/", async (req, res) => {
-//   const { items } = req.body;
-//   console.log(req.body)
-
-//   // Create a PaymentIntent with the order amount and currency
-//   const paymentIntent = await stripe.paymentIntents.create({
-//     amount: calculateOrderAmount(items, req.params.amount),
-//     currency: "usd",
-//     automatic_payment_methods: {
-//       enabled: true,
-//     },
-//   });
-
-//   res.send({
-//     clientSecret: paymentIntent.client_secret,
-//   });
-// });
-
-// app.listen(4242, () => console.log("Node server listening on port 4242!"));
 
 module.exports = router;

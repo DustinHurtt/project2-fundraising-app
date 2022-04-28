@@ -15,6 +15,8 @@ var app = express();
 
 require("./config/session.config")(app);
 
+require('dotenv/config')
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
@@ -48,6 +50,7 @@ app.use(function(err, req, res, next) {
 
 mongoose
   .connect('mongodb://localhost/project2-fundraising-app')
+  // .connect(process.env.MONGODB_URI)
   .then(x => console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`))
   .catch(err => console.error('Error connecting to mongo', err));
 

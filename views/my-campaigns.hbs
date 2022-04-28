@@ -9,8 +9,13 @@
         <img src="{{this.imageUrl}}" alt="room pic">  
         <p> {{this.name}} </p>
         <p> {{this.description}} </p>
-        <p> {{this.duration}} </p>
-        <p> {{this.goal}} </p>
+        <p> This is a {{this.duration}} week campaign.</p>
+        <p> Goal: {{this.readableGoal}} </p>
+        <p> We have received {{this.donations}} donations so far.</p>
+        <p> {{this.readableTotal}} has been donated. </p>
+        <p> {{this.percent}}% to goal. </p>
+        <p> This campaign ends on {{this.deadline}} </p>
+        <p> {{this.timeLeft.days}} days, {{this.timeLeft.hours}} hours, and {{this.timeLeft.minutes}} minutes before this campaign ends. </p>
         <ul>
         {{#each this.pledges}}
         <li>

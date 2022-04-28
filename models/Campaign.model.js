@@ -9,6 +9,7 @@ const campaignSchema = new Schema({
     timeLeft: { type: Object },
     rawDeadline: { type: Date },
     goal: {type: Number},
+    readableGoal: {type: String},
     percent: {type: Number},
     donations: {type: Number},
     owner: { type: Schema.Types.ObjectId, ref: "User" },
