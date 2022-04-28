@@ -24,7 +24,7 @@ router.post('/create-campaign', isLoggedIn, (req, res, next) => {
     duration: req.body.duration,
     goal: req.body.goal,
     rawDeadline: new Date( Date.now() + req.body.duration * 6.048e+8),
-    deadline: new Date( Date.now() + req.body.duration * 6.048e+8).toLocaleString(DateTime.DATE_MED_WITH_WEEKDAY),
+    deadline: new DateTime( Date.now() + req.body.duration * 6.048e+8).toLocaleString(DateTime.DATE_MED_WITH_WEEKDAY),
     // timeLeft: ""
 
 
