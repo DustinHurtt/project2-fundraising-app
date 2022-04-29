@@ -1,16 +1,71 @@
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
+<h1 class="index-hl">{{title}}</h1>
 
-{{message}}
 
+
+
+
+
+
+<section class="index">
+
+
+<section class="index-left">
+
+
+<form action="/users/signup" method="get">
+
+<button class="index-btn" type="submit">Signup to Donate</button>
+
+</form>
+
+
+<form action="/campaigns/campaigns-list" method="get">
+
+<button class="index-btn" type="submit">See All Campaigns</button>
+
+</form>
+
+
+</section>
+
+
+<section class="index-right">
+
+<article class="right-articles" id="ra1">
+
+<h3>Most Recent Campaigns</h3>
 {{#each campaigns}}
 <h5>{{this.name}}</h5>
 {{/each}}
 
+</article>
+
+
+<article class="right-articles" id="ra2">
+
+<h3>Most Recent Pledges</h3>
 {{#each pledges}}
 <h5>{{this.user.fullName}}</h5>
 <p>-${{this.amount}}</p>
 {{/each}}
+
+</article>
+
+</section>
+
+
+
+</section>
+
+
+
+{{message}}
+
+
+
+
+
+
 
 
 {{!-- {{payment-message}} --}}

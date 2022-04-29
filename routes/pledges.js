@@ -43,7 +43,9 @@ router.get(
         style: 'currency',
         currency: 'USD',
         maximumFractionDigits: 0
-      })
+      }),
+      campaign.deadline = campaign.rawDeadline.toLocaleString('en-US', {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'})
+  
   
       return campaign.save()
       })

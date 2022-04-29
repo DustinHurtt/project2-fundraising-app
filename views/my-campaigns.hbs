@@ -13,15 +13,14 @@
         <p> Goal: {{this.readableGoal}} </p>
         <p> We have received {{this.donations}} donations so far.</p>
         <p> {{this.readableTotal}} has been donated. </p>
-        <p> {{this.percent}}% to goal. </p>
+        <p> We are {{this.percent}}% to goal. </p>
         <p> This campaign ends on {{this.deadline}} </p>
-        <p> {{this.timeLeft.days}} days, {{this.timeLeft.hours}} hours, and {{this.timeLeft.minutes}} minutes before this campaign ends. </p>
+        <p> There are {{this.timeLeft.days}} days, {{this.timeLeft.hours}} hours, and {{this.timeLeft.minutes}} minutes before this campaign ends. </p>
         <ul>
         {{#each this.pledges}}
         <li>
-            <h5>{{this.comment}}</h5>
-            <p>-{{this.user.fullName}}</p>
-            <p>-${{this.amount}}</p>
+            <h5>{{this.user.fullName}} donated ${{this.amount}}</h5>
+            <p>-"{{this.comment}}"</p>
         </li>
         {{/each}}
         </ul>

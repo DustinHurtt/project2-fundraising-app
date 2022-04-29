@@ -9,22 +9,19 @@
         <img src="{{this.imageUrl}}" alt="room pic"> 
         <p> {{this.name}} </p>
         <p> {{this.description}} </p>
-        <p> {{this.duration}} weeks </p>
-        <p> {{this.goal}} </p>
-        <p> {{this.readableGoal}} </p>
-        <p> {{this.currentTotal}} </p>
-        <p> +{{this.deadline}} </p>
-        <p> *{{this.pledges.length}} donations so far </p>
-        <p> *{{this.timeLeft.days}} days {{this.timeLeft.hours}} hours {{this.timeLeft.minutes }} minutes and {{this.timeLeft.seconds}} seconds before deadline. </p>
-        <p>^^{{this.percent}} % to goal</p>
-        <p>@@{{this.donations}}</p>
-        <p>!!{{this.readableTotal}}</p>
+        <p> The duration for this campaign is {{this.duration}} weeks. </p>
+        <p> The goal is {{this.readableGoal}}. </p>
+        <p>This campaign concludes on {{this.deadline}}. </p>
+        <p>{{this.donations}} pledges have been made to this campaign so far. </p>
+        <p> There are {{this.timeLeft.days}} days, {{this.timeLeft.hours}} hours, and {{this.timeLeft.minutes }} minutes before the deadline. </p>
+        <p>{{this.readableTotal}} has been raised so far.</p>
+        <p>This campaign is {{this.percent}} % to goal</p>
+
         <ul>
         {{#each this.pledges}}
         <li>
-            <h5>{{this.comment}}</h5>
-            <p>-{{this.user.fullName}}</p>
-            <p>-${{this.amount}}</p>
+            <h5>{{this.user.fullName}} pledged ${{this.amount}}</h5>
+            <p>- "{{this.comment}}"</p>
         </li>
         {{/each}}
         
