@@ -1,4 +1,12 @@
-<h2>All Campaigns</h2>
+
+<h2 class="title">All Campaigns</h2>
+
+<section class="container">
+
+
+<section class="content">
+
+
 
 <div class=" ">
     {{#each campaigns}}
@@ -7,17 +15,17 @@
 
   
         <img src="{{this.imageUrl}}" alt="room pic"> 
-        <p> {{this.name}} </p>
+        <h4 class="name"> {{this.name}} </h4>
+        <h5 class="name"> Goal: {{this.readableGoal}}. </h5>
         <p> {{this.description}} </p>
-        <p> The duration for this campaign is {{this.duration}} weeks. </p>
-        <p> The goal is {{this.readableGoal}}. </p>
-        <p>This campaign concludes on {{this.deadline}}. </p>
-        <p>{{this.donations}} pledges have been made to this campaign so far. </p>
+        <p> This is a {{this.duration}} week campaign.  It will conclude on {{this.deadline}}. </p>
         <p> There are {{this.timeLeft.days}} days, {{this.timeLeft.hours}} hours, and {{this.timeLeft.minutes }} minutes before the deadline. </p>
-        <p>{{this.readableTotal}} has been raised so far.</p>
-        <p>This campaign is {{this.percent}} % to goal</p>
+        <p>{{this.donations}} pledges have been made to this campaign so far. </p>
+       
+        <p>{{this.readableTotal}} has been raised, and this campaign is {{this.percent}}% to goal.</p>
 
-        <ul>
+
+        <ul class="pledges">
         {{#each this.pledges}}
         <li>
             <h5>{{this.user.fullName}} pledged ${{this.amount}}</h5>
@@ -37,3 +45,10 @@
 </div>
 
     <a href="/campaigns/my-campaigns">See My Campaigns</a>
+
+
+</section>
+
+
+
+</section>

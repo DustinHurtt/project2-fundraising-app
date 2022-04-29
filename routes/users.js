@@ -33,7 +33,7 @@ router.post('/signup', function (req, res, next){
               password: hashedPass
           })
           .then((createdUser) => {
-              res.render('index', {message: "You have created a new account"})
+              res.render('my-campaigns', {message: "You have created a new account"})
           })
       }
   })
@@ -56,7 +56,7 @@ router.post('/login', function (req, res, next) {
           let correctPassword = bcrypt.compareSync(req.body.password, foundUser.password);
           if(correctPassword) {
               req.session.user = foundUser;
-              res.render('index', {message: "You have logged in"})
+              res.redirect('/campaigns/my-campaigns')
           } else {
               res.render('login', {message: "Incorrect Password"})
           }
@@ -66,7 +66,7 @@ router.post('/login', function (req, res, next) {
 
 router.get("/logout", (req, res, next) => {
   req.session.destroy();
-  res.render('index', {
+  res.render('login', {
       message: "You have logged out!"
   })
 

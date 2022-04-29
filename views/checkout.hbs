@@ -1,18 +1,29 @@
-    <section>
+  <h2>Make a Donation</h2> 
+
+
+ <section class="container">
+
+
+
+   
+   
+  <section class="content">
+
+    <div>
+
+      <ul>
 
     <img src="{{foundCampaign.imageUrl}}" alt="room pic">
-    <p>{{foundCampaign.name}}</p>
-    <p>{{foundCampaign.owner.fullName}}</p>
-    <p>{{foundCampaign.description}}</p>
-    <p>{{foundCampaign.deadline}}</p>
-    <p>{{foundCampaign.goal}}</p>
-    <p>{{foundCampaign.donations}}</p>
-    <p>{{foundCampaign.readableTotal}}</p>
-    <p>{{foundCampaign.percent}}</p>
-    <p>{{foundCampaign.deadline}}</p>
-    <p> *{{foundCampaign.timeLeft.days}} days {{foundCampaign.timeLeft.hours}} hours {{foundCampaign.timeLeft.minutes }} minutes and {{foundCampaign.timeLeft.seconds}} seconds before deadline. </p>
-    
 
+        <h4 class="name"> {{foundCampaign.name}} </h4>
+        <h5 class="name"> Goal: {{foundCampaign.readableGoal}} </h5>
+        <p> {{foundCampaign.description}} </p>
+        <p> This is a {{foundCampaign.duration}} week campaign.  It ends on {{foundCampaign.deadline}}. </p>
+        <p> There are {{foundCampaign.timeLeft.days}} days, {{foundCampaign.timeLeft.hours}} hours, and {{foundCampaign.timeLeft.minutes}} minutes before this campaign concludes. </p>
+        <p> We have received {{foundCampaign.donations}} donations so far.</p>
+        <p> {{foundCampaign.readableTotal}} has been donated and we are {{foundCampaign.percent}}% to goal.  </p>
+
+ 
       <form action="/pledges/{{foundCampaign._id}}/create-checkout-session"method='post'>
           <label>Comment</label>
           <input name="comment" />
@@ -29,16 +40,25 @@
         <input type="radio" id="1000" name="price_ID" value="price_1KsqdyCdp1vgefLQ5KubMlcf">
         <label for="1000">1000</label>
 
-          <button type="submit" id="checkout-button">Donate</button>
+          <button class="pledges" type="submit" id="checkout-button">Donate</button>
       </form>
 
-
-              {{#each foundCampaign.pledges}}
+      <ul class="pledges">
+          {{#each foundCampaign.pledges}}
         <li>
-            <h5>{{this.comment}}</h5>
-            <p>-{{this.user.fullName}}</p>
-            <p>-${{this.amount}}</p>
+            <h5>{{this.user.fullName}} donated ${{this.amount}}</h5>
+            <p>-"{{this.comment}}"</p>
+ 
         </li>
         {{/each}}
 
-    </section>
+      </ul>
+
+      </ul>
+
+      </div>
+
+  </section>
+
+
+</section>

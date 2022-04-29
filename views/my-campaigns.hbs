@@ -1,5 +1,12 @@
 <h2>My Campaigns</h2>
 
+
+<section class="container">
+
+<section class="content">
+
+
+
 <div class=" ">
     {{#each myCampaigns}}
 
@@ -7,16 +14,16 @@
 
   
         <img src="{{this.imageUrl}}" alt="room pic">  
-        <p> {{this.name}} </p>
+        <h4 class="name"> {{this.name}} </h4>
+        <h5 class="name"> Goal: {{this.readableGoal}} </h5>
         <p> {{this.description}} </p>
-        <p> This is a {{this.duration}} week campaign.</p>
-        <p> Goal: {{this.readableGoal}} </p>
+        <p> This is a {{this.duration}} week campaign.  It ends on {{this.deadline}}. </p>
+        <p> There are {{this.timeLeft.days}} days, {{this.timeLeft.hours}} hours, and {{this.timeLeft.minutes}} minutes before this campaign concludes. </p>
         <p> We have received {{this.donations}} donations so far.</p>
-        <p> {{this.readableTotal}} has been donated. </p>
-        <p> We are {{this.percent}}% to goal. </p>
-        <p> This campaign ends on {{this.deadline}} </p>
-        <p> There are {{this.timeLeft.days}} days, {{this.timeLeft.hours}} hours, and {{this.timeLeft.minutes}} minutes before this campaign ends. </p>
-        <ul>
+        <p> {{this.readableTotal}} has been donated and we are {{this.percent}}% to goal.  </p>
+      
+      
+        <ul class="pledges">
         {{#each this.pledges}}
         <li>
             <h5>{{this.user.fullName}} donated ${{this.amount}}</h5>
@@ -32,11 +39,15 @@
             <input type="submit" value="Delete Campaign" />
         </form>
 
-<hr>
+        <hr>
 
-</ul>
+    </ul>
 
 
     {{/each}}
 
 </div>
+
+</section>
+
+</section>
