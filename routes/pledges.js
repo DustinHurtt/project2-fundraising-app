@@ -14,7 +14,8 @@ const isNotOwner = require("../middleware/isNotOwner");
 
 // const {initialize, handleSubmit, checkStatus, showMessage, setLoading} = require('../stripe/checkout')
 
-const YOUR_DOMAIN = "http://localhost:3000";
+// const YOUR_DOMAIN = "http://localhost:3000";
+const YOUR_DOMAIN = "https://project2-fundraising-app.herokuapp.com/";
 
 const Stripe = require("stripe");
 const stripe = Stripe(
