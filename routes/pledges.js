@@ -1,8 +1,7 @@
 var express = require("express");
 var router = express.Router();
 
-// const app = express();
-// This is your test secret API key.
+
 
 const { DateTime }  = require('luxon')
 const { Interval }  = require('luxon')
@@ -12,7 +11,7 @@ const Campaign = require("../models/Campaign.model");
 const isLoggedIn = require("../middleware/isLoggedIn");
 const isNotOwner = require("../middleware/isNotOwner");
 
-// const {initialize, handleSubmit, checkStatus, showMessage, setLoading} = require('../stripe/checkout')
+
 
 // const YOUR_DOMAIN = "http://localhost:3000";
 const YOUR_DOMAIN = "https://project2-fundraising-app.herokuapp.com";
@@ -22,8 +21,7 @@ const stripe = Stripe(
   "sk_test_51KsWiCCdp1vgefLQKH9l6LqdtZtb6BZbWHto4TGmHjVgsunIY5BEjnEguKXd8l3SGtBWdXi0AWBO4B4zxxlHor1q00FBCa4Cya"
 );
 
-// app.use(express.static("public"));
-// app.use(express.json());
+
 
 router.get(
   "/:id/add-pledge", 
@@ -60,7 +58,7 @@ router.get(
       },
     })
       .then(function (foundCampaign) {
-        // res.render('add-pledge', {foundCampaign: foundCampaign});
+
         res.render("checkout", { foundCampaign: foundCampaign });
       })
       .catch(function (error) {

@@ -4,7 +4,7 @@ const pledgeSchema = new Schema({
     user: { type: Schema.Types.ObjectId, ref: "User" },
     comment: { type: String, maxlength: 200 },
     amount: { type: Number},
-// amount: {type: Number}
+
   },
   {
     timestamps: true

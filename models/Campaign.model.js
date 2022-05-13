@@ -16,7 +16,7 @@ const campaignSchema = new Schema({
     pledges: [{ type: Schema.Types.ObjectId, ref: "Pledge" }],
     currentTotal:  {type: Number, default: 0},
     readableTotal: {type: String}
-    // we will update this field a bit later when we create review model
+
   },
   {
     timestamps: true

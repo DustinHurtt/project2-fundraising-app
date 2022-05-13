@@ -155,6 +155,8 @@ router.get('/:id/edit', isLoggedIn, isOwner, (req, res, next) => {
   } );
 });
 
+
+
 router.post('/:id/edit', isLoggedIn, isOwner, (req, res, next) => {
 
   Campaign.findByIdAndUpdate(req.params.id, {...req.body})

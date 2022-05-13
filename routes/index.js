@@ -4,7 +4,7 @@ var router = express.Router();
 const Campaign = require("../models/Campaign.model");
 const Pledge = require('../models/Pledge.model');
 
-/* GET home page. */
+
 router.get('/', function(req, res, next) {
   Campaign.find()
   .sort({"createdAt": -1}).limit(3)

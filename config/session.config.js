@@ -4,14 +4,9 @@ const MongoStore = require('connect-mongo');
 
 require("dotenv/config");
 
-// since we are going to USE this middleware in the app.js,
-// let's export it and have it receive a parameter
-module.exports = app => {
-  // <== app is just a placeholder here
-  // but will become a real "app" in the app.js
-  // when this file gets imported/required there
 
-  // required for the app when deployed to Heroku (in production)
+module.exports = app => {
+
   app.set('trust proxy', 1);
 
   // use session
@@ -31,8 +26,7 @@ module.exports = app => {
           process.env.MONGODB_URI ||
           "mongodb://localhost/project2-fundraising-app",
 
-        // ttl => time to live
-        // ttl: 60 * 60 * 24 // 60sec * 60min * 24h => 1 day
+
       }),
     })
   );
