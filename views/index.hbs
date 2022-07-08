@@ -1,72 +1,48 @@
 <h1 class="index-hl">{{title}}</h1>
 
-
-
-
-
-
-
 <section class="index">
 
+  <section class="index-left">
 
-<section class="index-left">
+    <form action="/users/signup" method="get">
 
+      <button class="index-btn" type="submit">Signup to Donate</button>
 
-<form action="/users/signup" method="get">
+    </form>
 
-<button class="index-btn" type="submit">Signup to Donate</button>
+    <form action="/campaigns/campaigns-list" method="get">
 
-</form>
+      <button class="index-btn" type="submit">See All Campaigns</button>
 
+    </form>
 
-<form action="/campaigns/campaigns-list" method="get">
+  </section>
 
-<button class="index-btn" type="submit">See All Campaigns</button>
+  <section class="index-right">
 
-</form>
+    <article class="right-articles" id="ra1">
 
+      <h3>Most Recent Campaigns</h3>
+      {{#each campaigns}}
+        <h5>{{this.name}}</h5>
+      {{/each}}
 
-</section>
+    </article>
 
+    <article class="right-articles" id="ra2">
 
-<section class="index-right">
+      <h3>Most Recent Pledges</h3>
+      {{#each pledges}}
+        <h5>{{this.user.fullName}}</h5>
+        <p>-${{this.amount}}</p>
+      {{/each}}
 
-<article class="right-articles" id="ra1">
+    </article>
 
-<h3>Most Recent Campaigns</h3>
-{{#each campaigns}}
-<h5>{{this.name}}</h5>
-{{/each}}
-
-</article>
-
-
-<article class="right-articles" id="ra2">
-
-<h3>Most Recent Pledges</h3>
-{{#each pledges}}
-<h5>{{this.user.fullName}}</h5>
-<p>-${{this.amount}}</p>
-{{/each}}
-
-</article>
+  </section>
 
 </section>
-
-
-
-</section>
-
-
 
 {{message}}
 
-
-
-
-
-
-
-
-{{!-- {{payment-message}} --}}
-      <div id="payment-message" class="hidden"></div>
+<div id="payment-message" class="hidden"></div>

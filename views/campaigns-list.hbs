@@ -1,54 +1,62 @@
-
 <h2 class="title">All Campaigns</h2>
 
 <section class="container">
 
+  <section class="content">
 
-<section class="content">
+    <div class="">
+      {{#each campaigns}}
 
+        <ul>
 
+          <img src="{{this.imageUrl}}" alt="room pic" />
+          <h4 class="name"> {{this.name}} </h4>
+          <h5 class="name"> Goal: {{this.readableGoal}}. </h5>
+          <p> {{this.description}} </p>
+          <p>
+            This is a
+            {{this.duration}}
+            week campaign. It will conclude on
+            {{this.deadline}}.
+          </p>
+          <p>
+            There are
+            {{this.timeLeft.days}}
+            days,
+            {{this.timeLeft.hours}}
+            hours, and
+            {{this.timeLeft.minutes}}
+            minutes before the deadline.
+          </p>
+          <p>{{this.donations}}
+            pledges have been made to this campaign so far.
+          </p>
 
-<div class=" ">
-    {{#each campaigns}}
+          <p>{{this.readableTotal}}
+            has been raised, and this campaign is
+            {{this.percent}}% to goal.</p>
 
-    <ul>
+          <ul class="pledges">
+            {{#each this.pledges}}
+              <li>
+                <h5>{{this.user.fullName}} pledged ${{this.amount}}</h5>
+                <p>- "{{this.comment}}"</p>
+              </li>
+            {{/each}}
 
-  
-        <img src="{{this.imageUrl}}" alt="room pic"> 
-        <h4 class="name"> {{this.name}} </h4>
-        <h5 class="name"> Goal: {{this.readableGoal}}. </h5>
-        <p> {{this.description}} </p>
-        <p> This is a {{this.duration}} week campaign.  It will conclude on {{this.deadline}}. </p>
-        <p> There are {{this.timeLeft.days}} days, {{this.timeLeft.hours}} hours, and {{this.timeLeft.minutes }} minutes before the deadline. </p>
-        <p>{{this.donations}} pledges have been made to this campaign so far. </p>
-       
-        <p>{{this.readableTotal}} has been raised, and this campaign is {{this.percent}}% to goal.</p>
+          </ul>
+          <a href="/pledges/{{this._id}}/add-pledge">Donate to this campaign</a>
 
+          <hr />
 
-        <ul class="pledges">
-        {{#each this.pledges}}
-        <li>
-            <h5>{{this.user.fullName}} pledged ${{this.amount}}</h5>
-            <p>- "{{this.comment}}"</p>
-        </li>
-        {{/each}}
-        
         </ul>
-        <a href="/pledges/{{this._id}}/add-pledge">Donate to this campaign</a>
 
-<hr>
+      {{/each}}
 
-</ul>
-
-    {{/each}}
-
-</div>
+    </div>
 
     <a href="/campaigns/my-campaigns">See My Campaigns</a>
 
-
-</section>
-
-
+  </section>
 
 </section>

@@ -1,61 +1,57 @@
-<!DOCTYPE html>
 <html>
   <head>
     <title>{{title}}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="image" property="og:image" content="https://res.cloudinary.com/dt8b5pu9l/image/upload/v1654021039/k0forit8h3hftedu66re.jpg"/>
-    <meta name="author" content="Dustin Hurtt"/>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <meta
+      name="image"
+      property="og:image"
+      content="https://res.cloudinary.com/dt8b5pu9l/image/upload/v1654021039/k0forit8h3hftedu66re.jpg"
+    />
+    <meta name="author" content="Dustin Hurtt" />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
 
-    <script src="https://polyfill.io/v3/polyfill.min.js?version=3.52.1&features=fetch"></script>
+    <script
+      src="https://polyfill.io/v3/polyfill.min.js?version=3.52.1&features=fetch"
+    ></script>
     <script src="https://js.stripe.com/v3/"></script>
-    {{!-- <script src="luxon.js"></script> --}}
   </head>
   <body>
 
-<header class="header">
+    <header class="header">
 
+      <section>
 
+        <img
+          class="header-img"
+          src="/images/SVG-stand-with-ukraine-3.svg"
+          alt=""
+        />
 
+      </section>
 
-  <section>
+      <nav>
 
-    <img class="header-img" src="/images/SVG-stand-with-ukraine-3.svg" alt="">
+        <ul>
 
+          <li><a href="/">Home</a></li>
+          <li><a href="/users/login">Login</a></li>
+          <li><a href="/users/signup">Signup</a></li>
+          <li><a href="/users/logout">Logout</a></li>
+          <li><a href="/campaigns/campaigns-list">See All Campaigns</a></li>
+          <li><a href="/campaigns/create-campaign">Create a New Campaign</a></li>
+          <li><a href="/campaigns/my-campaigns">See My Campaigns</a></li>
 
-  </section>
+        </ul>
 
+      </nav>
 
-<nav>
+    </header>
 
-  <ul>
+    <section class="body">
 
-    <li><a href="/">Home</a></li>
-    <li><a href="/users/login">Login</a></li>
-    <li><a href="/users/signup">Signup</a></li>
-    <li><a href="/users/logout">Logout</a></li>
-    <li><a href="/campaigns/campaigns-list">See All Campaigns</a></li>
-    <li><a href="/campaigns/create-campaign">Create a New Campaign</a></li>
-    <li><a href="/campaigns/my-campaigns">See My Campaigns</a></li>
+      {{{body}}}
 
-
-  </ul>
-
-</nav>
-
-
-</header>
-
-
-
-<section class="body">
-
-    {{{body}}}
-
-</section>
-
-
-
+    </section>
 
   </body>
 </html>

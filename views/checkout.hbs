@@ -1,64 +1,106 @@
-  <h2>Make a Donation</h2> 
+<h2>Make a Donation</h2>
 
+<section class="container">
 
- <section class="container">
-
-
-
-   
-   
   <section class="content">
 
     <div>
 
       <ul>
 
-    <img src="{{foundCampaign.imageUrl}}" alt="room pic">
+        <img src="{{foundCampaign.imageUrl}}" alt="room pic" />
 
         <h4 class="name"> {{foundCampaign.name}} </h4>
         <h5 class="name"> Goal: {{foundCampaign.readableGoal}} </h5>
         <p> {{foundCampaign.description}} </p>
-        <p> This is a {{foundCampaign.duration}} week campaign.  It ends on {{foundCampaign.deadline}}. </p>
-        <p> There are {{foundCampaign.timeLeft.days}} days, {{foundCampaign.timeLeft.hours}} hours, and {{foundCampaign.timeLeft.minutes}} minutes before this campaign concludes. </p>
+        <p>
+          This is a
+          {{foundCampaign.duration}}
+          week campaign. It ends on
+          {{foundCampaign.deadline}}.
+        </p>
+        <p>
+          There are
+          {{foundCampaign.timeLeft.days}}
+          days,
+          {{foundCampaign.timeLeft.hours}}
+          hours, and
+          {{foundCampaign.timeLeft.minutes}}
+          minutes before this campaign concludes.
+        </p>
         <p> We have received {{foundCampaign.donations}} donations so far.</p>
-        <p> {{foundCampaign.readableTotal}} has been donated and we are {{foundCampaign.percent}}% to goal.  </p>
+        <p>
+          {{foundCampaign.readableTotal}}
+          has been donated and we are
+          {{foundCampaign.percent}}% to goal.
+        </p>
 
- 
-      <form action="/pledges/{{foundCampaign._id}}/create-checkout-session"method='post'>
+        <form
+          action="/pledges/{{foundCampaign._id}}/create-checkout-session"
+          method="post"
+        >
           <label>Comment</label>
           <input name="comment" />
 
-        <label>Amount</label>
-        <input type="radio" id="20" name="price_ID" value="price_1KsqbjCdp1vgefLQ4I1Ifzq3">
-        <label for="20">20</label>
-        <input type="radio" id="50" name="price_ID" value="price_1KsqcYCdp1vgefLQTKRe651f">
-        <label for="50">50</label>
-        <input type="radio" id="100" name="price_ID"value="price_1KsqcwCdp1vgefLQCCJg0HBA">
-        <label for="100">100</label>
-        <input type="radio" id="500" name="price_ID" value="price_1KsqdQCdp1vgefLQU5I71jdO">
-        <label for="500">500</label>
-        <input type="radio" id="1000" name="price_ID" value="price_1KsqdyCdp1vgefLQ5KubMlcf">
-        <label for="1000">1000</label>
+          <label>Amount</label>
+          <input
+            type="radio"
+            id="20"
+            name="price_ID"
+            value="price_1KsqbjCdp1vgefLQ4I1Ifzq3"
+          />
+          <label for="20">20</label>
+          <input
+            type="radio"
+            id="50"
+            name="price_ID"
+            value="price_1KsqcYCdp1vgefLQTKRe651f"
+          />
+          <label for="50">50</label>
+          <input
+            type="radio"
+            id="100"
+            name="price_ID"
+            value="price_1KsqcwCdp1vgefLQCCJg0HBA"
+          />
+          <label for="100">100</label>
+          <input
+            type="radio"
+            id="500"
+            name="price_ID"
+            value="price_1KsqdQCdp1vgefLQU5I71jdO"
+          />
+          <label for="500">500</label>
+          <input
+            type="radio"
+            id="1000"
+            name="price_ID"
+            value="price_1KsqdyCdp1vgefLQ5KubMlcf"
+          />
+          <label for="1000">1000</label>
 
-          <button class="pledges" type="submit" id="checkout-button">Donate</button>
-      </form>
+          <button
+            class="pledges"
+            type="submit"
+            id="checkout-button"
+          >Donate</button>
+        </form>
 
-      <ul class="pledges">
+        <ul class="pledges">
           {{#each foundCampaign.pledges}}
-        <li>
-            <h5>{{this.user.fullName}} donated ${{this.amount}}</h5>
-            <p>-"{{this.comment}}"</p>
- 
-        </li>
-        {{/each}}
+            <li>
+              <h5>{{this.user.fullName}} donated ${{this.amount}}</h5>
+              <p>-"{{this.comment}}"</p>
+
+            </li>
+          {{/each}}
+
+        </ul>
 
       </ul>
 
-      </ul>
-
-      </div>
+    </div>
 
   </section>
-
 
 </section>

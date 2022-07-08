@@ -1,17 +1,13 @@
 var express = require("express");
 var router = express.Router();
 
-
-
-const { DateTime }  = require('luxon')
-const { Interval }  = require('luxon')
+const { DateTime } = require("luxon");
+const { Interval } = require("luxon");
 
 const Pledge = require("../models/Pledge.model");
 const Campaign = require("../models/Campaign.model");
 const isLoggedIn = require("../middleware/isLoggedIn");
 const isNotOwner = require("../middleware/isNotOwner");
-
-
 
 // const YOUR_DOMAIN = "http://localhost:3000";
 const YOUR_DOMAIN = "https://project2-fundraising-app.herokuapp.com";
@@ -21,44 +17,56 @@ const stripe = Stripe(
   "sk_test_51KsWiCCdp1vgefLQKH9l6LqdtZtb6BZbWHto4TGmHjVgsunIY5BEjnEguKXd8l3SGtBWdXi0AWBO4B4zxxlHor1q00FBCa4Cya"
 );
 
-
-
 router.get(
-  "/:id/add-pledge", 
+  "/:id/add-pledge",
   isLoggedIn,
   isNotOwner,
   async function (req, res, next) {
+    await Campaign.findById(req.params.id)
+      .cursor()
+      .eachAsync(function (campaign) {
+        campaign.timeLeft = Interval.fromDateTimes(
+          new Date(Date.now()),
+          campaign.rawDeadline
+        )
+          .toDuration(["days", "hours", "minutes", "seconds"])
+          .toObject();
+        campaign.percent = Math.round(
+          (campaign.currentTotal / campaign.goal) * 100
+        );
+        campaign.donations = campaign.pledges.length;
+        (campaign.readableTotal = campaign.currentTotal.toLocaleString(
+          "en-US",
+          {
+            style: "currency",
+            currency: "USD",
+            maximumFractionDigits: 0,
+          }
+        )),
+          (campaign.readableGoal = campaign.goal.toLocaleString("en-US", {
+            style: "currency",
+            currency: "USD",
+            maximumFractionDigits: 0,
+          })),
+          (campaign.deadline = campaign.rawDeadline.toLocaleString("en-US", {
+            weekday: "long",
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+          }));
 
-    await Campaign.findById(req.params.id).cursor().eachAsync( function (campaign){
-      campaign.timeLeft = Interval.fromDateTimes((new Date(Date.now())), campaign.rawDeadline).toDuration(['days', 'hours', 'minutes', 'seconds']).toObject();
-      campaign.percent = Math.round(campaign.currentTotal / campaign.goal * 100);
-      campaign.donations = campaign.pledges.length;
-      campaign.readableTotal = campaign.currentTotal.toLocaleString('en-US', {
-        style: 'currency',
-        currency: 'USD',
-        maximumFractionDigits: 0
-      }),
-      campaign.readableGoal = campaign.goal.toLocaleString('en-US', {
-        style: 'currency',
-        currency: 'USD',
-        maximumFractionDigits: 0
-      }),
-      campaign.deadline = campaign.rawDeadline.toLocaleString('en-US', {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'})
-  
-  
-      return campaign.save()
-      })
+        return campaign.save();
+      });
 
     Campaign.findById(req.params.id)
-    .populate({
-      path: "pledges",
-      options: { sort: { 'createdAt': -1 } },
-      populate: {
-        path: "user",
-      },
-    })
+      .populate({
+        path: "pledges",
+        options: { sort: { createdAt: -1 } },
+        populate: {
+          path: "user",
+        },
+      })
       .then(function (foundCampaign) {
-
         res.render("checkout", { foundCampaign: foundCampaign });
       })
       .catch(function (error) {
@@ -86,8 +94,7 @@ router.post("/:id/add-pledge", isLoggedIn, isNotOwner, (req, res, next) => {
     });
 });
 
-router.post('/:id/create-checkout-session', async (req, res) => {
-
+router.post("/:id/create-checkout-session", async (req, res) => {
   const session = await stripe.checkout.sessions.create({
     line_items: [
       {
@@ -100,7 +107,6 @@ router.post('/:id/create-checkout-session', async (req, res) => {
     cancel_url: `${YOUR_DOMAIN}/users/login`,
   });
 
-
   try {
     let newPledge = await Pledge.create({
       user: req.session.user._id,
@@ -109,19 +115,18 @@ router.post('/:id/create-checkout-session', async (req, res) => {
     });
 
     let updatedCampaign = await Campaign.findByIdAndUpdate(
-      req.params.id ,
-      { $addToSet: { pledges: newPledge }, $inc: {currentTotal: session.amount_total / 100} },
+      req.params.id,
+      {
+        $addToSet: { pledges: newPledge },
+        $inc: { currentTotal: session.amount_total / 100 },
+      },
       { new: true }
     );
-
-    console.log("Success", updatedCampaign);
   } catch (err) {
     console.log("Something went wrong", err.message);
   }
 
   res.redirect(303, session.url);
 });
-
-
 
 module.exports = router;

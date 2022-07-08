@@ -1,21 +1,17 @@
-const Campaign = require("../models/Campaign.model")
+const Campaign = require("../models/Campaign.model");
 
-const isOwner= (req, res, next) => {
+const isOwner = (req, res, next) => {
+  Campaign.findById(req.params.id)
+    .populate("owner")
+    .then((foundCampaign) => {
+      if (foundCampaign.owner._id.toHexString() === req.session.user._id) {
+        next();
+      } else {
+        res.render("index", {
+          message: "You must be logged in to access that feature",
+        });
+      }
+    });
+};
 
-    Campaign.findById(req.params.id)
-    .populate('owner')
-    .then(foundCampaign => {
-        console.log(req.session.user._id)
-        console.log(foundCampaign.owner._id)
-        if (foundCampaign.owner._id.toHexString() === req.session.user._id){
-            next()
-        } else {
-            res.render('index', {
-                message: "You must be logged in to access that feature"
-            })
-        }
-    })
-
-}
-
-module.exports = isOwner
+module.exports = isOwner;
